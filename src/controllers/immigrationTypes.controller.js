@@ -1,9 +1,9 @@
 const pool = require("../utils/dbConfig");
 
 module.exports = {
-    getCountries: async (req, res, next) => {
+    getImmigrationTypes: async (req, res, next) => {
         const {
-            status
+            immigration_type_status
         } = req.query;
 
         const page = req.query.page ? parseInt(req.query.page) : null;
@@ -13,28 +13,28 @@ module.exports = {
 
         let query = `
             SELECT * 
-            FROM countries
+            FROM immigration_types
             WHERE 1 = 1
         `;
         const queryParams = [];
 
         let query2 = `
             SELECT COUNT(*) AS total_records 
-            FROM countries
+            FROM immigration_types
             WHERE 1 = 1
         `;
         const queryParams2 = []
 
-        if(status)
+        if(immigration_type_status)
         {
-            query += ' AND country_status = ?';
-            queryParams.push(status);
+            query += ' AND immigration_type_status = ?';
+            queryParams.push(immigration_type_status);
             
-            query2 += ' AND country_status = ?';
-            queryParams2.push(status);
+            query2 += ' AND immigration_type_status = ?';
+            queryParams2.push(immigration_type_status);
         }
 
-        query += ` ORDER BY country_name ASC`;
+        query += ` ORDER BY immigration_type_id DESC`;
 
         if(page && perPage)
         {
