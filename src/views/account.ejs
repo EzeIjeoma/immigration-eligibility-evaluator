@@ -3,7 +3,7 @@
     <head>
         <%- include('./partials/head') %>
     </head>
-    <body onload="isAuthenticated(); displayProfile();" class="loading" data-layout-color="light"  data-layout-mode="default" data-layout-size="fluid" data-topbar-color="light" data-leftbar-position="fixed" data-leftbar-color="light" data-leftbar-size='default' data-sidebar-user='true'>
+    <body onload="isAuthenticated(); displayProfile(); updateProfilePopUp();" class="loading" data-layout-color="light"  data-layout-mode="default" data-layout-size="fluid" data-topbar-color="light" data-leftbar-position="fixed" data-leftbar-color="light" data-leftbar-size='default' data-sidebar-user='true'>
         <!-- Begin page -->
         <div id="wrapper">
             <%- include('./partials/topBar') %>
@@ -21,27 +21,33 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="header-title">Start Your Immigration Eligibility Evaluations</h4>
+                                        <h4 class="header-title">Account</h4>
                                         <p class="text-muted font-13">
-                                            Fill up the form below to evaluate your immigration eligibility in the country selected or any other.
+                                            Update your account
                                         </p>
 
-                                        <form id="evaluator">
+                                        <form id="reset-form">
                                             <div class="row">
-                                                <div class="mb-3 col-md-6">
-                                                    <label for="country_id" class="form-label">Country Of Choice</label>
-                                                    <select id="country_id" name="country_id" class="form-select required"></select>
+                                                <div class="mb-3 col-12">
+                                                    <label for="current_password" class="form-label">Current Password</label>
+                                                    <input class="form-control required" type="password" id="current_password" name="current_password" required="" placeholder="Enter your current password">
                                                 </div>
-                                                <div class="mb-3 col-md-6">
-                                                    <label for="immigration_type_id" class="form-label">Immigration Type</label>
-                                                    <select id="immigration_type_id" name="immigration_type_id" class="form-select required"></select>
+                                            </div>
+                                            <div class="row">
+                                                <div class="mb-3 col-12">
+                                                    <label for="new_password" class="form-label">New Password</label>
+                                                    <input class="form-control required" type="password" id="new_password" name="new_password" required="" placeholder="Enter your preffered password">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="mb-3 col-12">
+                                                    <label for="re_password" class="form-label">Confirm Password</label>
+                                                    <input class="form-control required" type="password" id="re_password" name="re_password" required="" placeholder="Confirm password">
                                                 </div>
                                             </div>
 
-                                            <div class="row criteria-list"></div>
-
                                             <button type="submit" class="btn btn-primary waves-effect waves-light">
-                                                Evaluate
+                                                Reset
                                             </button>
 
                                         </form>
@@ -84,6 +90,6 @@
         <!-- END wrapper -->
 
         <%- include('./partials/scripts') %>
-        <script src="/assets/js/modules/applications.js"></script>
+        <script src="/assets/js/modules/account.js"></script>
     </body>
 </html>

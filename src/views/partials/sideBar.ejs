@@ -18,7 +18,7 @@
                         </a> -->
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item" onclick="signOut()">
+                        <a href="javascript:void(0);" class="dropdown-item notify-item" onclick="showSignOutMessage()">
                             <i class="fe-log-out me-1"></i>
                             <span>Logout</span>
                         </a>
@@ -30,13 +30,13 @@
 
             <ul class="list-inline">
                 <li class="list-inline-item">
-                    <a href="#" class="text-muted left-user-info">
+                    <a href="/account" class="text-muted left-user-info">
                         <i class="mdi mdi-account"></i>
                     </a>
                 </li>
 
                 <li class="list-inline-item">
-                    <a href="#" onclick="signOut()">
+                    <a href="#" onclick="showSignOutMessage()">
                         <i class="mdi mdi-power"></i>
                     </a>
                 </li>
@@ -63,7 +63,7 @@
                     </a>    
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/eligibility-check">
                         <i class="mdi mdi-marker-check"></i>
                          <span> Check Country Eligibility </span>
                     </a>    
@@ -72,6 +72,12 @@
                     <a href="#">
                         <i class="mdi mdi-selection-ellipse-arrow-inside"></i>
                          <span> Immigration Insights </span>
+                    </a>    
+                </li>
+                <li>
+                    <a href="/account">
+                        <i class="mdi mdi-account"></i>
+                         <span> My Account </span>
                     </a>    
                 </li>
             </ul>

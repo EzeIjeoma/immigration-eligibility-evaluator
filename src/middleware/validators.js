@@ -10,8 +10,11 @@ module.exports = {
     verifyAccount: validate(authValidations.verifyAccount),
     sendPasswordRecoveryEmail: validate(authValidations.sendPasswordRecoveryMail),
     changePassword: validate(authValidations.changePassword),
+    resetPassword: validate(authValidations.resetPassword),
     profileUpdate: validate(authValidations.profileUpdate),
 
     /* Applications route validators */
-    apply: validate(applicationValidations.apply)
+    evaluate: validate(applicationValidations.evaluate),
+    findSuitableCountries: validate(applicationValidations.findSuitableCountries),
+    getCountryVisaCriteria: validate(applicationValidations.getCountryVisaCriteria)
 }

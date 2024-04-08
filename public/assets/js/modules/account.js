@@ -5,15 +5,17 @@ $(function () {
     let token = sessionStorage.getItem('token');
 
 	$(document).ready(function($) {
-        //profile update
-        submitProfileUpdate();
+        //reset password
+        resetPassword();
     });
 
-    function submitProfileUpdate()
+    function resetPassword()
     {
-        $('#profile-update-form').on('submit', function(e){
+        $('#reset-form').on('submit', function(e){
             e.preventDefault();
             var form = $(this);
+            var newPass = $("#new_password").val();
+            var confirmPass = $("#re_password").val();
             var fields = form.find('input.required, select.required');
             
             blockUI();
@@ -31,28 +33,32 @@ $(function () {
                 }
             }
             
+            if(confirmPass !== newPass)
+            {
+               //alert("Passwords do not match")
+               showSimpleMessage("Attention", "Passwords don't match", "error");
+               unblockUI();
+               return false;
+            }
+    
             $.ajax({
                 type: 'POST',
-                url: API_URL_ROOT+'/profile-update',
+                url: API_URL_ROOT+'/reset-password',
                 data: JSON.stringify(form.serializeObject()),
                 dataType: 'json',
                 contentType: 'application/json',
                 headers:{'x-access-token':token},
                 success: function(response)
                 {
-                    var tkn = response.token; //generated access token from request
-                    //remove existing token from local storage
-                    sessionStorage.removeItem('token');
-                    //save the current access token
-                    sessionStorage.setItem('token', tkn); //set access token 
-
-                    //reload current page
-                    window.location.reload();
+                    form.get(0).reset();
+                    //alert(response.message);
+                    showSimpleMessage("Success", response.message, "success");
+                    unblockUI();
                 },
                 error: function(req, status, err)
                 {
-                    showSimpleMessage("Attention", req.responseJSON.message, "error");
                     //alert(req.responseJSON.message);
+                    showSimpleMessage("Attention", req.responseJSON.message, "error");
                     unblockUI();
                 }
             });

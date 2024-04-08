@@ -25,4 +25,13 @@ module.exports = {
     applications: async (req, res) => {
         res.render('applications', { title:'Applications', page_title: 'Applications'})
     },
+    findSuitableCountries: async (req, res) => {
+        res.render('suitableCountries', { title:'Suitable Countries', page_title: 'Find Suitable Countries'})
+    },
+    account: async (req, res) => {
+        res.render('account', { title:'My Account', page_title: 'My Account'})
+    },
+    eligibilityCheck: async (req, res) => {
+        res.render('eligibilityCheck', { title: 'Eligibility Checker', page_title: 'Eligibility Checker' });
+    }
 }
